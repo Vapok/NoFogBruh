@@ -109,7 +109,6 @@ public class DisableFogComponent
     {
         private static void Postfix(ref MistEmitter __instance, GameObject[] psystems, bool enabled)
         {
-            // Disable Mist clouds, does not work on Console Commands (env Misty) but should work in the regular game.
             if (EnableMistEmitter.Value)
             {
                 foreach (GameObject gameObject in psystems)
