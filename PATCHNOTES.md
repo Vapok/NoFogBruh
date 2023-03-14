@@ -1,4 +1,9 @@
 # No Fog Bruh! Patchnotes
+### 1.0.2 - Updating for Valheim and BepInEx
+* Updates Valheim to 0.214.2
+* Updates BepInEx to 5.4.21
+* Various Clean Up Items
+
 ### 1.0.1 - Removing some logging.
 * Removing a Debug Warning Statement that was left in.
 
