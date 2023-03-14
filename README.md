@@ -8,6 +8,7 @@ This mod works best when used in conjuction with Configuration Manager, where yo
 
 
 ### Current Patch Notes
+[Github Patchnotes](https://github.com/Vapok/NoFogBruh/blob/main/PATCHNOTES.md)
 
 #### 1.0.0 - Initial Release
 *  No Fog Bruh! aims to provide the player with a fog free experience
