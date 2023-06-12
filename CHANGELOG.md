@@ -1,6 +1,6 @@
 # No Fog Bruh! Patchnotes
-### 1.0.3 - Updating for Valheim 0.216.7
-* Updates Valheim to 0.216.7
+### 1.0.3 - Updating for Valheim 0.216.9
+* Updates Valheim to 0.216.9
 
 ### 1.0.2 - Updating for Valheim and BepInEx
 * Updates Valheim to 0.214.2
