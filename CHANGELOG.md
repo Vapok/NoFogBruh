@@ -1,4 +1,10 @@
 # No Fog Bruh! Patchnotes
+### 1.0.5 - Updating for Valheim 0.217.19
+* Updates Valheim to 0.217.19
+
+### 1.0.4 - Updating for Valheim 0.217.14
+* Updates Valheim to 0.217.14
+
 ### 1.0.3 - Updating for Valheim 0.216.9
 * Updates Valheim to 0.216.9
 
