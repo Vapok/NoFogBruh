@@ -14,13 +14,13 @@ namespace NoFogBruh.Features;
 public class DisableFogComponent
 {
     public static bool FeatureInitialized = false;
-    public static ConfigEntry<bool> EnableFog { get; private set;}
-    public static ConfigEntry<bool> EnableAmbientComponent { get; private set;}
-    public static ConfigEntry<bool> EnableGroundMist { get; private set;}
-    public static ConfigEntry<bool> EnableFogClouds { get; private set;}
-    public static ConfigEntry<bool> EnableFogOceanMist { get; private set;}
-    public static ConfigEntry<bool> EnableDistantFog { get; private set;}
-    public static ConfigEntry<bool> EnableMistEmitter { get; private set;}
+    public static ConfigEntry<bool> EnableFog = null;
+    public static ConfigEntry<bool> EnableAmbientComponent = null;
+    public static ConfigEntry<bool> EnableGroundMist = null;
+    public static ConfigEntry<bool> EnableFogClouds = null;
+    public static ConfigEntry<bool> EnableFogOceanMist = null;
+    public static ConfigEntry<bool> EnableDistantFog = null;
+    public static ConfigEntry<bool> EnableMistEmitter = null;
     
     static DisableFogComponent()
     {
@@ -29,34 +29,35 @@ public class DisableFogComponent
 
     private static void RegisterConfigurationFile()
     {
-        EnableFog = ConfigSyncBase.UnsyncedConfig("Fog Settings", "Enable Fog Component", false,
+        ConfigSyncBase.UnsyncedConfig("Fog Settings", "Enable Fog Component", false,
             new ConfigDescription("When enabled, will enable fog as the Allfather imagined. When disabled, there will be no fog.",
                 null,
-                new ConfigurationManagerAttributes { Order = 1 }));
-        EnableAmbientComponent = ConfigSyncBase.UnsyncedConfig("Fog Settings", "Enable Ambient Occlusion Component", false,
+                new ConfigurationManagerAttributes { Order = 1 }),ref EnableFog);
+        
+        ConfigSyncBase.UnsyncedConfig("Fog Settings", "Enable Ambient Occlusion Component", false,
             new ConfigDescription("When enabled, will enable fog as the Allfather imagined. When disabled, there will be no fog.",
                 null,
-                new ConfigurationManagerAttributes { Order = 2 }));
-        EnableGroundMist = ConfigSyncBase.UnsyncedConfig("Fog Settings", "Enable Ground Mist", false,
+                new ConfigurationManagerAttributes { Order = 2 }),ref EnableAmbientComponent);
+        ConfigSyncBase.UnsyncedConfig("Fog Settings", "Enable Ground Mist", false,
             new ConfigDescription("When enabled, will enable fog as the Allfather imagined. When disabled, there will be no fog.",
                 null,
-                new ConfigurationManagerAttributes { Order = 3 }));
-        EnableFogClouds = ConfigSyncBase.UnsyncedConfig("Fog Settings", "Enable Fog Clouds", false,
+                new ConfigurationManagerAttributes { Order = 3 }), ref EnableGroundMist);
+        ConfigSyncBase.UnsyncedConfig("Fog Settings", "Enable Fog Clouds", false,
             new ConfigDescription("When enabled, will enable fog as the Allfather imagined. When disabled, there will be no fog.",
                 null,
-                new ConfigurationManagerAttributes { Order = 4 }));
-        EnableFogOceanMist = ConfigSyncBase.UnsyncedConfig("Fog Settings", "Enable Ocean Mist", false,
+                new ConfigurationManagerAttributes { Order = 4 }), ref EnableFogClouds);
+        ConfigSyncBase.UnsyncedConfig("Fog Settings", "Enable Ocean Mist", false,
             new ConfigDescription("When enabled, will enable fog as the Allfather imagined. When disabled, there will be no fog.",
                 null,
-                new ConfigurationManagerAttributes { Order = 5 }));
-        EnableDistantFog = ConfigSyncBase.UnsyncedConfig("Fog Settings", "Enable Distant Fog", false,
+                new ConfigurationManagerAttributes { Order = 5 }),ref EnableFogOceanMist);
+        ConfigSyncBase.UnsyncedConfig("Fog Settings", "Enable Distant Fog", false,
             new ConfigDescription("When enabled, will enable fog as the Allfather imagined. When disabled, there will be no fog.",
                 null,
-                new ConfigurationManagerAttributes { Order = 6 }));
-        EnableMistEmitter = ConfigSyncBase.UnsyncedConfig("Fog Settings", "Enable Distant Fog", false,
+                new ConfigurationManagerAttributes { Order = 6 }), ref EnableDistantFog);
+        ConfigSyncBase.UnsyncedConfig("Fog Settings", "Enable Distant Fog", false,
             new ConfigDescription("When enabled, will enable fog as the Allfather imagined. When disabled, there will be no fog.",
                 null,
-                new ConfigurationManagerAttributes { Order = 7 }));
+                new ConfigurationManagerAttributes { Order = 7 }), ref EnableMistEmitter);
     }
 
     private static void  SetFogSetting(PostProcessingBehaviour instance, FogComponent fog)
@@ -98,6 +99,7 @@ public class DisableFogComponent
 
             if (EnvMan.instance == null) return;
             GameObject.Find("_GameMain/_Environment/FollowPlayer/GroundMist").SetActive(EnableGroundMist.Value);
+            GameObject.Find("_GameMain/_Environment/FollowPlayer/Mist").SetActive(EnableFog.Value);
             GameObject.Find("_GameMain/_Environment/FollowPlayer/FogClouds").SetActive(EnableFogClouds.Value);
             GameObject.Find("_GameMain/_Environment/OceanMist").SetActive(EnableFogOceanMist.Value);
             GameObject.Find("_GameMain/_Environment/Distant_fog_planes").SetActive(EnableDistantFog.Value);

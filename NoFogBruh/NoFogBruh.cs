@@ -13,13 +13,16 @@ using Vapok.Common.Managers.LocalizationManager;
 
 namespace NoFogBruh
 {
+    [BepInDependency(Jotunn.Main.ModGuid)]
+    [BepInDependency("com.ValheimModding.YamlDotNetDetector")]
     [BepInPlugin(_pluginId, _displayName, _version)]
+    
     public class NoFogBruh : BaseUnityPlugin, IPluginInfo
     {
         //Module Constants
         private const string _pluginId = "vapok.mods.nofogbruh";
         private const string _displayName = "No Fog Bruh";
-        private const string _version = "1.0.6";
+        private const string _version = "1.1.2";
         
         //Interface Properties
         public string PluginId => _pluginId;
