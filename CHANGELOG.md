@@ -1,4 +1,14 @@
 # No Fog Bruh! Patchnotes
+### 1.1.2 - Removing the Fog Elements Added
+* This removes additional Fog Elements that were added Valheim.
+
+### 1.1.1 - Helps to Increment Version Number
+* Added Thunderstore Dependencies
+* Updated Version Number
+
+### 1.1.0 - Updated to Jotunn and Removed ServerSync
+* Updates Valheim to 0.221.4
+
 ### 1.0.6 - Updating for Valheim 0.217.28
 * Updates Valheim to 0.217.28
 
