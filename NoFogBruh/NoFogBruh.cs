@@ -32,7 +32,7 @@ namespace NoFogBruh
         
         //Class Properties
         public static ILogIt Log => _log;
-        public static bool ValheimAwake = false;
+        public static bool ValheimAwake;
         public static Waiting Waiter;
         
         //Class Privates

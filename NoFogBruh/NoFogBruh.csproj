@@ -83,7 +83,7 @@
           <HintPath>..\..\References\Valheim\0.221.4\Managed\UnityEngine.CoreModule.dll</HintPath>
         </Reference>
         <Reference Include="Vapok.Valheim.Common, Version=2.0.2214.0, Culture=neutral, processorArchitecture=MSIL">
-          <HintPath>..\packages\Vapok.Valheim.Common.2.0.2214\lib\net48\Vapok.Valheim.Common.dll</HintPath>
+          <HintPath>..\packages\Vapok.Valheim.Common.2.4.2214\lib\net48\Vapok.Valheim.Common.dll</HintPath>
         </Reference>
         <Reference Include="YamlDotNet, Version=13.0.0.0, Culture=neutral, PublicKeyToken=ec19458f3c15af5e, processorArchitecture=MSIL">
           <HintPath>..\packages\YamlDotNet.13.3.1\lib\net45\YamlDotNet.dll</HintPath>

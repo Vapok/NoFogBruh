@@ -14,13 +14,13 @@ namespace NoFogBruh.Features;
 public class DisableFogComponent
 {
     public static bool FeatureInitialized = false;
-    public static ConfigEntry<bool> EnableFog = null;
-    public static ConfigEntry<bool> EnableAmbientComponent = null;
-    public static ConfigEntry<bool> EnableGroundMist = null;
-    public static ConfigEntry<bool> EnableFogClouds = null;
-    public static ConfigEntry<bool> EnableFogOceanMist = null;
-    public static ConfigEntry<bool> EnableDistantFog = null;
-    public static ConfigEntry<bool> EnableMistEmitter = null;
+    public static ConfigEntry<bool> EnableFog;
+    public static ConfigEntry<bool> EnableAmbientComponent;
+    public static ConfigEntry<bool> EnableGroundMist;
+    public static ConfigEntry<bool> EnableFogClouds;
+    public static ConfigEntry<bool> EnableFogOceanMist;
+    public static ConfigEntry<bool> EnableDistantFog;
+    public static ConfigEntry<bool> EnableMistEmitter;
     
     static DisableFogComponent()
     {
