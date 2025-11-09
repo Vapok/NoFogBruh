@@ -4,6 +4,7 @@ using System.Reflection;
 using BepInEx;
 using HarmonyLib;
 using JetBrains.Annotations;
+using Jotunn.Utils;
 using NoFogBruh.Configuration;
 using NoFogBruh.Features;
 using Vapok.Common.Abstractions;
@@ -13,13 +14,16 @@ using Vapok.Common.Managers.LocalizationManager;
 
 namespace NoFogBruh
 {
+    [BepInDependency(Jotunn.Main.ModGuid)]
+    [BepInDependency("com.ValheimModding.YamlDotNetDetector")]
     [BepInPlugin(_pluginId, _displayName, _version)]
+    [SynchronizationMode(AdminOnlyStrictness.IfOnServer)]
     public class NoFogBruh : BaseUnityPlugin, IPluginInfo
     {
         //Module Constants
         private const string _pluginId = "vapok.mods.nofogbruh";
         private const string _displayName = "No Fog Bruh";
-        private const string _version = "1.0.3";
+        private const string _version = "1.1.5";
         
         //Interface Properties
         public string PluginId => _pluginId;
@@ -29,7 +33,7 @@ namespace NoFogBruh
         
         //Class Properties
         public static ILogIt Log => _log;
-        public static bool ValheimAwake = false;
+        public static bool ValheimAwake;
         public static Waiting Waiter;
         
         //Class Privates
@@ -90,7 +94,6 @@ namespace NoFogBruh
         private void OnDestroy()
         {
             _instance = null;
-            _harmony?.UnpatchSelf();
         }
 
         public class Waiting

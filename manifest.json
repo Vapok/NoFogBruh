@@ -1,9 +1,11 @@
 {
   "name": "NoFogBruh",
-  "version_number": "1.0.3",
+  "version_number": "1.1.5",
   "website_url": "https://github.com/Vapok/NoFogBruh",
   "description": "A Valheim Mod that Removes Fog from the Game.  No Fog Bruh!",
   "dependencies": [
-    "denikson-BepInExPack_Valheim-5.4.2102"
+    "denikson-BepInExPack_Valheim-5.4.2333",
+    "ValheimModding-Jotunn-2.26.1",
+    "ValheimModding-YamlDotNet-16.3.1"
   ]
 }
