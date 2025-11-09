@@ -4,6 +4,7 @@ using System.Reflection;
 using BepInEx;
 using HarmonyLib;
 using JetBrains.Annotations;
+using Jotunn.Managers;
 using Jotunn.Utils;
 using NoFogBruh.Configuration;
 using NoFogBruh.Features;
@@ -11,6 +12,7 @@ using Vapok.Common.Abstractions;
 using Vapok.Common.Managers;
 using Vapok.Common.Managers.Configuration;
 using Vapok.Common.Managers.LocalizationManager;
+using Vapok.Common.Tools;
 
 namespace NoFogBruh
 {
@@ -23,7 +25,7 @@ namespace NoFogBruh
         //Module Constants
         private const string _pluginId = "vapok.mods.nofogbruh";
         private const string _displayName = "No Fog Bruh";
-        private const string _version = "1.1.5";
+        private const string _version = "1.1.6";
         
         //Interface Properties
         public string PluginId => _pluginId;
@@ -52,14 +54,17 @@ namespace NoFogBruh
             //Waiting For Startup
             Waiter = new Waiting();
             
-            //Initialize Managers
-            Localizer.Init();
-
-            //Register Configuration Settings
-            _config = new ConfigRegistry(_instance);
+            //Jotunn Localization
+            var localization = LocalizationManager.Instance.GetLocalization();
 
             //Register Logger
             LogManager.Init(PluginId,out _log);
+            
+            //Initialize Managers
+            Initializer.LoadManagers(localization);
+
+            //Register Configuration Settings
+            _config = new ConfigRegistry(_instance);
 
             Localizer.Waiter.StatusChanged += InitializeModule;
             
