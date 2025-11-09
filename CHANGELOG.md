@@ -1,5 +1,8 @@
 # No Fog Bruh! Patchnotes
 
+### 1.1.6 - Updating Dependencies
+* Updating Dependencies
+
 ### 1.1.5 - Mistland Mist's Unity GameObject Changed
 * For some reason, the Mistland's Mist GameObject location changed breaking the Mistlands Mist Disabled Feature
 
