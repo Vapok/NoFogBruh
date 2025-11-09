@@ -1,5 +1,8 @@
 # No Fog Bruh! Patchnotes
 
+### 1.1.5 - Mistland Mist's Unity GameObject Changed
+* For some reason, the Mistland's Mist GameObject location changed breaking the Mistlands Mist Disabled Feature
+
 ### 1.1.4 - Null Reference Error
 * Last update appears to have introduced an occassional NRE.
   * This is a non-harmful error, but a nusiance non-the-less.

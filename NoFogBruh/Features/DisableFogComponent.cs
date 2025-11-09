@@ -130,7 +130,8 @@ public class DisableFogComponent
 
             if (EnvMan.instance == null) return;
             SafeExecute("GroundMist",() =>GameObject.Find("_GameMain/_Environment/FollowPlayer/GroundMist").SetActive(EnableGroundMist.Value));
-            SafeExecute("Mistlands_Globalmist",() =>GameObject.Find("_GameMain/_Environment/FollowPlayer/Mistlands_Globalmist").SetActive(EnableMistlandsMist.Value));
+            SafeExecute("Mistlands_Globalmist",() =>GameObject.Find("_LocationList_Mistlands(Clone)/environment_effects/FollowPlayer/Mistlands_Globalmist").SetActive(EnableMistlandsMist.Value));
+            SafeExecute("Mistlands_Globalmist",() =>GameObject.Find("_LocationList_Mistlands/environment_effects/FollowPlayer/Mistlands_Globalmist").SetActive(EnableMistlandsMist.Value));
             SafeExecute("InteriorDust",() =>GameObject.Find("_GameMain/_Environment/FollowPlayer/InteriorDust").SetActive(EnableInteriorDust.Value));
             SafeExecute("env_mountain_cave",() =>GameObject.Find("_LocationList_MountainCaves(Clone)/environment/followplayer/env_mountain_cave/mist").SetActive(EnableMountainCaveMist.Value));
             SafeExecute("env_mountain_cave_hildir",() =>GameObject.Find("_LocationList_MountainCaves(Clone)/environment/followplayer/env_mountain_cave_hildir/mist").SetActive(EnableMountainCaveMist.Value));

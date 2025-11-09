@@ -4,6 +4,7 @@ using System.Reflection;
 using BepInEx;
 using HarmonyLib;
 using JetBrains.Annotations;
+using Jotunn.Utils;
 using NoFogBruh.Configuration;
 using NoFogBruh.Features;
 using Vapok.Common.Abstractions;
@@ -16,13 +17,13 @@ namespace NoFogBruh
     [BepInDependency(Jotunn.Main.ModGuid)]
     [BepInDependency("com.ValheimModding.YamlDotNetDetector")]
     [BepInPlugin(_pluginId, _displayName, _version)]
-    
+    [SynchronizationMode(AdminOnlyStrictness.IfOnServer)]
     public class NoFogBruh : BaseUnityPlugin, IPluginInfo
     {
         //Module Constants
         private const string _pluginId = "vapok.mods.nofogbruh";
         private const string _displayName = "No Fog Bruh";
-        private const string _version = "1.1.4";
+        private const string _version = "1.1.5";
         
         //Interface Properties
         public string PluginId => _pluginId;
