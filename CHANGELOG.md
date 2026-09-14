@@ -1,5 +1,19 @@
 # No Fog Bruh! Patchnotes
 
+## 2.0.0 - Valheim 1.0 Release & Biome Categorization
+* **Valheim 1.0 Support**: Fully updated and verified for Valheim 1.0.
+* **Deep North Support**: Added configuration toggles for Deep North Global Mist and FaderFX occlusion.
+* **Snow Glint Control**: Added toggle to suppress blinding snow surface glint and specular reflections across snow biomes.
+* **Blizzard & Snowstorm Mist**: Added toggle to remove dense blizzard and snowstorm fog particle arrays.
+* **Volumetric Particle Mist**: Added support for suppressing dynamic `ParticleMist` and `DistantFogEmitter` systems.
+* **Configuration Reorganization**: Categorized all configuration options neatly by Biome (General, Ocean, Black Forest, Mountain, Mistlands, Ashlands, Deep North).
+* **Performance Optimizations**: Eliminated fixed-update exception overhead and optimized GameObject lookup routines.
+* **Bug Fixes**: Fixed `EnvMan.SetParticleArrayEnabled` Harmony parameter type bug.
+* **Code Cleanup**: Removed unused lifecycle callbacks and streamlined transpiler methods.
+
+<details>
+<summary><b>Changelog History</b> (<i>click to expand</i>)</summary>
+
 ### 1.1.6 - Updating Dependencies
 * Updating Dependencies
 
@@ -61,3 +75,5 @@
   * Ocean Mist Removal
   * Distant Fog Removal
   * Mist Emitters Removal
+
+</details>
