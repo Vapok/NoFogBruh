@@ -79,12 +79,6 @@ namespace NoFogBruh
 
             //Profit
         }
-        
-        private void Update()
-        {
-            if (!Player.m_localPlayer || !ZNetScene.instance)
-                return;
-        }
 
         public void InitializeModule(object send, EventArgs args)
         {

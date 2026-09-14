@@ -15,18 +15,37 @@ namespace NoFogBruh.Features;
 public class DisableFogComponent
 {
     public static bool FeatureInitialized = false;
+    
+    // General
     public static ConfigEntry<bool> EnableFog;
     public static ConfigEntry<bool> EnableAmbientComponent;
     public static ConfigEntry<bool> EnableGroundMist;
     public static ConfigEntry<bool> EnableFogClouds;
-    public static ConfigEntry<bool> EnableFogOceanMist;
     public static ConfigEntry<bool> EnableDistantFog;
     public static ConfigEntry<bool> EnableMistEmitter;
+
+    // Ocean
+    public static ConfigEntry<bool> EnableFogOceanMist;
+
+    // Black Forest
     public static ConfigEntry<bool> EnableInteriorDust;
+
+    // Mountain
     public static ConfigEntry<bool> EnableMountainCaveMist;
+    public static ConfigEntry<bool> EnableSnowGlint;
+    public static ConfigEntry<bool> EnableBlizzardMist;
+
+    // Mistlands
     public static ConfigEntry<bool> EnableMistlandsMist;
+    public static ConfigEntry<bool> EnableParticleMist;
+
+    // Ashlands
     public static ConfigEntry<bool> EnableAshlandsMist;
     public static ConfigEntry<bool> EnableAshlandsFaderFx;
+
+    // Deep North
+    public static ConfigEntry<bool> EnableDeepNorthMist;
+    public static ConfigEntry<bool> EnableDeepNorthFaderFx;
 
     static DisableFogComponent()
     {
@@ -35,58 +54,100 @@ public class DisableFogComponent
 
     private static void RegisterConfigurationFile()
     {
-        ConfigSyncBase.UnsyncedConfig("Fog Settings", "Enable Fog Component", false,
+        // General
+        ConfigSyncBase.UnsyncedConfig("General", "Enable Fog Component", false,
             new ConfigDescription("When enabled, will enable fog as the Allfather imagined. When disabled, there will be no fog.",
                 null,
-                new ConfigurationManagerAttributes { Order = 1 }),ref EnableFog);
+                new ConfigurationManagerAttributes { Order = 1 }), ref EnableFog);
         
-        ConfigSyncBase.UnsyncedConfig("Fog Settings", "Enable Ambient Occlusion Component", false,
+        ConfigSyncBase.UnsyncedConfig("General", "Enable Ambient Occlusion Component", false,
             new ConfigDescription("Enables the overall occlusion fog that gives Valheim it's soft glow",
                 null,
-                new ConfigurationManagerAttributes { Order = 2 }),ref EnableAmbientComponent);
-        ConfigSyncBase.UnsyncedConfig("Fog Settings", "Enable Ground Mist", false,
+                new ConfigurationManagerAttributes { Order = 2 }), ref EnableAmbientComponent);
+        
+        ConfigSyncBase.UnsyncedConfig("General", "Enable Ground Mist", false,
             new ConfigDescription("Enables Ground mist nearby the player",
                 null,
                 new ConfigurationManagerAttributes { Order = 3 }), ref EnableGroundMist);
-        ConfigSyncBase.UnsyncedConfig("Fog Settings", "Enable Fog Clouds", false,
+        
+        ConfigSyncBase.UnsyncedConfig("General", "Enable Fog Clouds", false,
             new ConfigDescription("Enables Fog Clouds",
                 null,
                 new ConfigurationManagerAttributes { Order = 4 }), ref EnableFogClouds);
-        ConfigSyncBase.UnsyncedConfig("Fog Settings", "Enable Ocean Mist", false,
-            new ConfigDescription("Enables the mist when in Ocean",
-                null,
-                new ConfigurationManagerAttributes { Order = 5 }),ref EnableFogOceanMist);
-        ConfigSyncBase.UnsyncedConfig("Fog Settings", "Enable Distant Fog", false,
+
+        ConfigSyncBase.UnsyncedConfig("General", "Enable Distant Fog", false,
             new ConfigDescription("Enables Distant Fog visuals",
                 null,
-                new ConfigurationManagerAttributes { Order = 6 }), ref EnableDistantFog);
-        ConfigSyncBase.UnsyncedConfig("Fog Settings", "Enable Mist Emitters", false,
+                new ConfigurationManagerAttributes { Order = 5 }), ref EnableDistantFog);
+
+        ConfigSyncBase.UnsyncedConfig("General", "Enable Mist Emitters", false,
             new ConfigDescription("Enables Mist Emitters for Particle Mist",
                 null,
-                new ConfigurationManagerAttributes { Order = 7 }), ref EnableMistEmitter);
-        ConfigSyncBase.SyncedConfig("Fog Settings", "Enable Troll Cave Mist", false,
+                new ConfigurationManagerAttributes { Order = 6 }), ref EnableMistEmitter);
+
+        // Ocean
+        ConfigSyncBase.UnsyncedConfig("Ocean", "Enable Ocean Mist", false,
+            new ConfigDescription("Enables the mist when in Ocean",
+                null,
+                new ConfigurationManagerAttributes { Order = 1 }), ref EnableFogOceanMist);
+
+        // Black Forest
+        ConfigSyncBase.SyncedConfig("Black Forest", "Enable Troll Cave Mist", false,
             new ConfigDescription("Enables mist and fog on the interior parts of Troll Caves",
                 null,
-                new ConfigurationManagerAttributes { Order = 8 }), ref EnableInteriorDust);
-        ConfigSyncBase.SyncedConfig("Fog Settings", "Enable Mountain Cave Mist", false,
+                new ConfigurationManagerAttributes { Order = 1 }), ref EnableInteriorDust);
+
+        // Mountain
+        ConfigSyncBase.SyncedConfig("Mountain", "Enable Mountain Cave Mist", false,
             new ConfigDescription("Enables mist and fog on the interior parts of Mountains Caves",
                 null,
-                new ConfigurationManagerAttributes { Order = 9 }), ref EnableMountainCaveMist);
-        ConfigSyncBase.SyncedConfig("Fog Settings", "Enable Mistlands Global Mist", false,
+                new ConfigurationManagerAttributes { Order = 1 }), ref EnableMountainCaveMist);
+
+        ConfigSyncBase.UnsyncedConfig("Mountain", "Enable Snow Glint", false,
+            new ConfigDescription("Enables blinding snow surface glint and specular reflections in Mountain snowfields",
+                null,
+                new ConfigurationManagerAttributes { Order = 2 }), ref EnableSnowGlint);
+
+        ConfigSyncBase.UnsyncedConfig("Mountain", "Enable Snowstorm / Blizzard Fog", false,
+            new ConfigDescription("Enables snowstorm, blizzard, and snow fog effects",
+                null,
+                new ConfigurationManagerAttributes { Order = 3 }), ref EnableBlizzardMist);
+
+        // Mistlands
+        ConfigSyncBase.SyncedConfig("Mistlands", "Enable Mistlands Global Mist", false,
             new ConfigDescription("Enables magical mist in Mistlands",
                 null,
-                new ConfigurationManagerAttributes { Order = 10 }), ref EnableMistlandsMist);
-        ConfigSyncBase.UnsyncedConfig("Fog Settings", "Enable Ashlands Global Mist", false,
+                new ConfigurationManagerAttributes { Order = 1 }), ref EnableMistlandsMist);
+
+        ConfigSyncBase.SyncedConfig("Mistlands", "Enable Particle Mist", false,
+            new ConfigDescription("Enables dynamic volumetric particle mist in mist areas",
+                null,
+                new ConfigurationManagerAttributes { Order = 2 }), ref EnableParticleMist);
+
+        // Ashlands
+        ConfigSyncBase.UnsyncedConfig("Ashlands", "Enable Ashlands Global Mist", false,
             new ConfigDescription("Enables smokey mist in Ashlands",
                 null,
-                new ConfigurationManagerAttributes { Order = 11 }), ref EnableAshlandsMist);
-        ConfigSyncBase.UnsyncedConfig("Fog Settings", "Enable Ashlands FaderFX", false,
+                new ConfigurationManagerAttributes { Order = 1 }), ref EnableAshlandsMist);
+
+        ConfigSyncBase.UnsyncedConfig("Ashlands", "Enable Ashlands FaderFX", false,
             new ConfigDescription("Enables fader effects that occur in Ashlands causing a foggy occlusion",
                 null,
-                new ConfigurationManagerAttributes { Order = 12 }), ref EnableAshlandsFaderFx);
+                new ConfigurationManagerAttributes { Order = 2 }), ref EnableAshlandsFaderFx);
+
+        // Deep North
+        ConfigSyncBase.UnsyncedConfig("Deep North", "Enable Deep North Global Mist", false,
+            new ConfigDescription("Enables mist and fader effects in Deep North",
+                null,
+                new ConfigurationManagerAttributes { Order = 1 }), ref EnableDeepNorthMist);
+
+        ConfigSyncBase.UnsyncedConfig("Deep North", "Enable Deep North FaderFX", false,
+            new ConfigDescription("Enables fader effects that occur in Deep North causing a foggy occlusion",
+                null,
+                new ConfigurationManagerAttributes { Order = 2 }), ref EnableDeepNorthFaderFx);
     }
 
-    private static void  SetFogSetting(PostProcessingBehaviour instance, FogComponent fog)
+    private static void SetFogSetting(PostProcessingBehaviour instance, FogComponent fog)
     {
         if (EnableFog.Value)
         {
@@ -98,7 +159,7 @@ public class DisableFogComponent
         }
     }
 
-    private static void  SetAmbientSetting(PostProcessingBehaviour instance, AmbientOcclusionComponent fog)
+    private static void SetAmbientSetting(PostProcessingBehaviour instance, AmbientOcclusionComponent fog)
     {
         if (EnableAmbientComponent.Value)
         {
@@ -110,68 +171,126 @@ public class DisableFogComponent
         }
     }
 
+    private static void SetActiveIfExists(string path, bool active)
+    {
+        var go = GameObject.Find(path);
+        if (go != null && go.activeSelf != active)
+        {
+            go.SetActive(active);
+        }
+    }
+
     [HarmonyPatch(typeof(EnvMan), nameof(EnvMan.SetEnv))]
     public static class EnvManSetEnvPatch
     {
-        private static void Prefix(ref EnvMan __instance, ref EnvSetup env)
+        private static void Postfix(EnvMan __instance, EnvSetup env)
         {
             if (!EnableFog.Value)
             {
-                var localEnv = env;
-                SafeExecute("Fog",() =>
-                {
-                    localEnv.m_fogDensityNight = 0f;
-                    localEnv.m_fogDensityMorning = 0f;
-                    localEnv.m_fogDensityDay = 0f;
-                    localEnv.m_fogDensityEvening = 0f;
-                });
-                env = localEnv;
+                RenderSettings.fogDensity = 0f;
             }
 
             if (EnvMan.instance == null) return;
-            SafeExecute("GroundMist",() =>GameObject.Find("_GameMain/_Environment/FollowPlayer/GroundMist").SetActive(EnableGroundMist.Value));
-            SafeExecute("Mistlands_Globalmist",() =>GameObject.Find("_LocationList_Mistlands(Clone)/environment_effects/FollowPlayer/Mistlands_Globalmist").SetActive(EnableMistlandsMist.Value));
-            SafeExecute("Mistlands_Globalmist",() =>GameObject.Find("_LocationList_Mistlands/environment_effects/FollowPlayer/Mistlands_Globalmist").SetActive(EnableMistlandsMist.Value));
-            SafeExecute("InteriorDust",() =>GameObject.Find("_GameMain/_Environment/FollowPlayer/InteriorDust").SetActive(EnableInteriorDust.Value));
-            SafeExecute("env_mountain_cave",() =>GameObject.Find("_LocationList_MountainCaves(Clone)/environment/followplayer/env_mountain_cave/mist").SetActive(EnableMountainCaveMist.Value));
-            SafeExecute("env_mountain_cave_hildir",() =>GameObject.Find("_LocationList_MountainCaves(Clone)/environment/followplayer/env_mountain_cave_hildir/mist").SetActive(EnableMountainCaveMist.Value));
-            SafeExecute("Mist",() =>GameObject.Find("_GameMain/_Environment/FollowPlayer/Mist").SetActive(EnableFog.Value));
-            SafeExecute("FogClouds",() =>GameObject.Find("_GameMain/_Environment/FollowPlayer/FogClouds").SetActive(EnableFogClouds.Value));
-            SafeExecute("OceanMist",() =>GameObject.Find("_GameMain/_Environment/OceanMist").SetActive(EnableFogOceanMist.Value));
-            SafeExecute("Distant_fog_planes",() =>GameObject.Find("_GameMain/_Environment/Distant_fog_planes").SetActive(EnableDistantFog.Value));
-            SafeExecute("Ashlands_Misty",() =>GameObject.Find("_LocationList_Ashlands(Clone)/environment_effects/FollowPlayer/Ashlands_Misty").SetActive(EnableAshlandsMist.Value));
-            SafeExecute("Ashlands_FaderFX",() =>GameObject.Find("_LocationList_Ashlands(Clone)/environment_effects/FollowPlayer/Ashlands_FaderFX/").SetActive(EnableAshlandsFaderFx.Value));
+
+            SetActiveIfExists("_GameMain/_Environment/FollowPlayer/GroundMist", EnableGroundMist.Value);
+            SetActiveIfExists("_LocationList_Mistlands(Clone)/environment_effects/FollowPlayer/Mistlands_Globalmist", EnableMistlandsMist.Value);
+            SetActiveIfExists("_LocationList_Mistlands/environment_effects/FollowPlayer/Mistlands_Globalmist", EnableMistlandsMist.Value);
+            SetActiveIfExists("_GameMain/_Environment/FollowPlayer/InteriorDust", EnableInteriorDust.Value);
+            SetActiveIfExists("_LocationList_MountainCaves(Clone)/environment/followplayer/env_mountain_cave/mist", EnableMountainCaveMist.Value);
+            SetActiveIfExists("_LocationList_MountainCaves(Clone)/environment/followplayer/env_mountain_cave_hildir/mist", EnableMountainCaveMist.Value);
+            SetActiveIfExists("_GameMain/_Environment/FollowPlayer/Mist", EnableFog.Value);
+            SetActiveIfExists("_GameMain/_Environment/FollowPlayer/FogClouds", EnableFogClouds.Value);
+            SetActiveIfExists("_GameMain/_Environment/OceanMist", EnableFogOceanMist.Value);
+            SetActiveIfExists("_GameMain/_Environment/Distant_fog_planes", EnableDistantFog.Value);
+            SetActiveIfExists("_LocationList_Ashlands(Clone)/environment_effects/FollowPlayer/Ashlands_Misty", EnableAshlandsMist.Value);
+            SetActiveIfExists("_LocationList_Ashlands(Clone)/environment_effects/FollowPlayer/Ashlands_FaderFX", EnableAshlandsFaderFx.Value);
+            SetActiveIfExists("_LocationList_Ashlands/environment_effects/FollowPlayer/Ashlands_Misty", EnableAshlandsMist.Value);
+            SetActiveIfExists("_LocationList_Ashlands/environment_effects/FollowPlayer/Ashlands_FaderFX", EnableAshlandsFaderFx.Value);
+            SetActiveIfExists("_LocationList_DeepNorth(Clone)/environment_effects/FollowPlayer/DeepNorth_Misty", EnableDeepNorthMist.Value);
+            SetActiveIfExists("_LocationList_DeepNorth(Clone)/environment_effects/FollowPlayer/DeepNorth_FaderFX", EnableDeepNorthFaderFx.Value);
+            SetActiveIfExists("_LocationList_DeepNorth/environment_effects/FollowPlayer/DeepNorth_Misty", EnableDeepNorthMist.Value);
+            SetActiveIfExists("_LocationList_DeepNorth/environment_effects/FollowPlayer/DeepNorth_FaderFX", EnableDeepNorthFaderFx.Value);
+            SetActiveIfExists("_GameMain/_Environment/FollowPlayer/SnowStorm", EnableBlizzardMist.Value);
+            SetActiveIfExists("_GameMain/_Environment/FollowPlayer/Blizzard", EnableBlizzardMist.Value);
         }
     }
 
-    private static void SafeExecute(string name, Action action)
+    [HarmonyPatch(typeof(EnvMan), nameof(EnvMan.Update))]
+    public static class EnvManUpdatePatch
     {
-        try
+        private static void Postfix(EnvMan __instance)
         {
-            action();
-        }
-        catch (Exception ex)
-        {
-            NoFogBruh.Log.Debug($"Safe Execution Error Handled: for {name} - {ex.Message}\r\nStack Trace: {ex.StackTrace}");
+            if (!EnableSnowGlint.Value)
+            {
+                Shader.SetGlobalFloat("_SnowGlintStrength", 0f);
+            }
         }
     }
-    
+
     [HarmonyPatch(typeof(EnvMan), nameof(EnvMan.SetParticleArrayEnabled))]
     public static class EnvManSetParticleArrayEnabledPatch
     {
-        private static void Postfix(ref MistEmitter __instance, GameObject[] psystems, bool enabled)
+        private static void Postfix(GameObject[] psystems, bool enabled)
         {
-            if (EnableMistEmitter.Value)
+            if (psystems == null) return;
+
+            if (!EnableMistEmitter.Value)
             {
                 foreach (GameObject gameObject in psystems)
                 {
+                    if (gameObject == null) continue;
                     MistEmitter componentInChildren = gameObject.GetComponentInChildren<MistEmitter>();
-                    if (componentInChildren)
+                    if (componentInChildren != null)
                     {
                         componentInChildren.enabled = false;
                     }
                 }
             }
+
+            if (!EnableDistantFog.Value)
+            {
+                foreach (GameObject gameObject in psystems)
+                {
+                    if (gameObject == null) continue;
+                    DistantFogEmitter distantFog = gameObject.GetComponentInChildren<DistantFogEmitter>();
+                    if (distantFog != null)
+                    {
+                        distantFog.SetEmit(false);
+                        distantFog.enabled = false;
+                    }
+                }
+            }
+        }
+    }
+
+    [HarmonyPatch(typeof(ParticleMist), nameof(ParticleMist.Update))]
+    public static class ParticleMistUpdatePatch
+    {
+        private static bool Prefix(ParticleMist __instance)
+        {
+            if (!EnableParticleMist.Value)
+            {
+                if (__instance.m_ps != null && __instance.m_ps.particleCount > 0)
+                {
+                    __instance.m_ps.Clear();
+                }
+                return false;
+            }
+            return true;
+        }
+    }
+
+    [HarmonyPatch(typeof(DistantFogEmitter), nameof(DistantFogEmitter.Update))]
+    public static class DistantFogEmitterUpdatePatch
+    {
+        private static bool Prefix(DistantFogEmitter __instance)
+        {
+            if (!EnableDistantFog.Value)
+            {
+                __instance.SetEmit(false);
+                return false;
+            }
+            return true;
         }
     }
     
@@ -181,89 +300,54 @@ public class DisableFogComponent
         public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
         {
             var instrs = instructions.ToList();
-
-            var counter = 0;
-
-            CodeInstruction LogMessage(CodeInstruction instruction)
-            {
-                NoFogBruh.Log.Debug($"IL_{counter}: Opcode: {instruction.opcode} Operand: {instruction.operand}");
-                return instruction;
-            }
-
             var ambientComponentField = AccessTools.DeclaredField(typeof(PostProcessingBehaviour), "m_AmbientOcclusion");
             var fogComponentField = AccessTools.DeclaredField(typeof(PostProcessingBehaviour), "m_FogComponent");
             
             var skipstopA = 0;
             var partADone = false;
             var skipstopB = 0;
-            
 
             for (int i = 0; i < instrs.Count; ++i)
             {
                 if (!partADone)
                 {
-                    yield return LogMessage(instrs[i]);
-                    counter++;
+                    yield return instrs[i];
 
                     if (i > 6 && instrs[i].opcode == OpCodes.Call && instrs[i + 1].opcode == OpCodes.Ldarg_0 &&
                         instrs[i + 2].opcode == OpCodes.Ldarg_0 && instrs[i + 3].opcode == OpCodes.Ldfld &&
                         instrs[i + 3].operand.Equals(ambientComponentField) && instrs[i + 4].opcode == OpCodes.Call)
                     {
                         var ldlocInstruction = new CodeInstruction(OpCodes.Ldarg_0);
-                        //Move Any Labels from the instruction position being patched to new instruction.
                         if (instrs[i].labels.Count > 0)
                             instrs[i].MoveLabelsTo(ldlocInstruction);
 
-                        //Patch the ldloc_0 which is the argument of my method using local variable 0.
-                        yield return LogMessage(ldlocInstruction);
-                        counter++;
-
-                        //Patch the ldloc_0 which is the argument of my method using local variable 0.
-                        yield return LogMessage(new CodeInstruction(OpCodes.Ldarg_0));
-                        counter++;
-         
-                        //Patch the ldloc_0 which is the argument of my method using local variable 0.
-                        yield return LogMessage(new CodeInstruction(OpCodes.Ldfld,ambientComponentField));
-                        counter++;
-         
-                        //Patch Calling Method
-                        yield return LogMessage(new CodeInstruction(OpCodes.Call, AccessTools.DeclaredMethod(typeof(DisableFogComponent), nameof(SetAmbientSetting))));
-                        counter++;
+                        yield return ldlocInstruction;
+                        yield return new CodeInstruction(OpCodes.Ldarg_0);
+                        yield return new CodeInstruction(OpCodes.Ldfld, ambientComponentField);
+                        yield return new CodeInstruction(OpCodes.Call, AccessTools.DeclaredMethod(typeof(DisableFogComponent), nameof(SetAmbientSetting)));
                         skipstopA = i + 4;
-
                         partADone = true;
                     }
-                } else {
-                    
-                    if ((skipstopB == 0 && i > skipstopA ) || (i > skipstopB && skipstopB != 0))
+                }
+                else
+                {
+                    if ((skipstopB == 0 && i > skipstopA) || (i > skipstopB && skipstopB != 0))
                     {
-                        yield return LogMessage(instrs[i]);
-                        counter++;
+                        yield return instrs[i];
                     }
 
-                    if (i > 6 && instrs[i].opcode == OpCodes.Call && instrs[i+1].opcode == OpCodes.Ldarg_0 && instrs[i+2].opcode == OpCodes.Ldarg_0 && instrs[i+3].opcode == OpCodes.Ldfld && instrs[i+3].operand.Equals(fogComponentField) && instrs[i+4].opcode == OpCodes.Call)
+                    if (i > 6 && instrs[i].opcode == OpCodes.Call && instrs[i + 1].opcode == OpCodes.Ldarg_0 &&
+                        instrs[i + 2].opcode == OpCodes.Ldarg_0 && instrs[i + 3].opcode == OpCodes.Ldfld &&
+                        instrs[i + 3].operand.Equals(fogComponentField) && instrs[i + 4].opcode == OpCodes.Call)
                     {
                         var ldlocInstruction = new CodeInstruction(OpCodes.Ldarg_0);
-                        
-                        //Move Any Labels from the instruction position being patched to new instruction.
                         if (instrs[i].labels.Count > 0)
                             instrs[i].MoveLabelsTo(ldlocInstruction);
           
-                        //Patch the ldloc_0 which is the argument of my method using local variable 0.
-                        yield return LogMessage(ldlocInstruction);
-                        counter++;
-         
-                        //Patch the ldloc_0 which is the argument of my method using local variable 0.
-                        yield return LogMessage(new CodeInstruction(OpCodes.Ldarg_0));
-                        counter++;
-         
-                        //Patch the ldloc_0 which is the argument of my method using local variable 0.
-                        yield return LogMessage(new CodeInstruction(OpCodes.Ldfld,fogComponentField));
-                        counter++;
-         
-                        //Patch Calling Method
-                        yield return LogMessage(new CodeInstruction(OpCodes.Call, AccessTools.DeclaredMethod(typeof(DisableFogComponent), nameof(SetFogSetting))));
-                        counter++;
+                        yield return ldlocInstruction;
+                        yield return new CodeInstruction(OpCodes.Ldarg_0);
+                        yield return new CodeInstruction(OpCodes.Ldfld, fogComponentField);
+                        yield return new CodeInstruction(OpCodes.Call, AccessTools.DeclaredMethod(typeof(DisableFogComponent), nameof(SetFogSetting)));
                         skipstopB = i + 4;
                     }
                 }
