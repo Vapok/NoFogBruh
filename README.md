@@ -72,9 +72,11 @@ Configure every biome setting individually via the in-game [BepInEx Configuratio
 
 <div align="center">
 
-🇺🇸 **English** • 🇩🇪 **German** • 🇫🇷 **French** • 🇪🇸 **Spanish** • 🇨🇳 **Chinese** • 🇷🇺 **Russian**
+🇺🇸 **English** (Default)
 
 </div>
+
+*Want to help translate No Fog Bruh? Community translations are welcome! Please submit a PR on [GitHub](https://github.com/Vapok/NoFogBruh) or stop by our [Discord](https://discord.gg/5YAJkRFBXt).*
 
 ---
 
