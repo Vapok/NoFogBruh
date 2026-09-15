@@ -1,76 +1,103 @@
-# No Fog Bruh! by Vapok
+<div align="center">
 
-**No Fog Bruh!** is a comprehensive environmental visibility and fog management mod for Valheim. It allows players and server administrators to selectively customize or completely disable all post-processing fog, distant fog planes, particle mist clouds, atmospheric occlusion, and environmental weather overlays.
+# 🌫️ No Fog *Bruh!*
 
-Whether you're looking for crystal-clear long-distance visibility across mountains and oceans or looking to remove blinding snow glares and dense dungeon dust, **No Fog Bruh!** gives you total control on a per-biome basis.
+### *Comprehensive atmospheric fog, mist, and blizzard particle suppression for Valheim.*
 
----
-
-## Features & Biome Breakdown
-
-All settings can be toggled in real-time using the in-game [BepInEx Configuration Manager](https://github.com/BepInEx/BepInEx.ConfigurationManager).
-
-### 🌐 General
-* **Enable Fog Component**: Controls Valheim's global depth fog post-processing pipeline. When disabled, global distance fog density is set to zero.
-* **Enable Ambient Occlusion Component**: Controls the soft ambient occlusion fog and glow pass.
-* **Enable Ground Mist**: Controls atmospheric ground mist planes following the player.
-* **Enable Fog Clouds**: Controls volumetric fog cloud clusters.
-* **Enable Distant Fog**: Controls distant fog billboard emitters and horizon fog planes across terrain and water.
-* **Enable Mist Emitters**: Controls environment-instantiated particle mist emitters.
-
-### 🌊 Ocean
-* **Enable Ocean Mist**: Controls sea mist and coastal water vapor particles.
-
-### 🌲 Black Forest
-* **Enable Troll Cave Mist**: Controls atmospheric interior dust and mist particles within Troll Caves. *(Server Syncable)*
-
-### 🏔️ Mountain
-* **Enable Mountain Cave Mist**: Controls dense mist within Mountain Caves and Frost Caves. *(Server Syncable)*
-* **Enable Snow Glint**: Suppresses blinding specular snow surface glint and glare in snowfields.
-* **Enable Snowstorm / Blizzard Fog**: Disables dense blizzard and snowstorm particle arrays around the player.
-
-### 🌫️ Mistlands
-* **Enable Mistlands Global Mist**: Controls global magical mist clouds in Mistlands locations. *(Server Syncable)*
-* **Enable Particle Mist**: Controls dynamic volumetric mist particles interacting with Mister/Demister systems. *(Server Syncable)*
-
-### 🔥 Ashlands
-* **Enable Ashlands Global Mist**: Controls smoky mist and ash vapor effects across the Ashlands.
-* **Enable Ashlands FaderFX**: Controls dark fader occlusion effects that obscure distant sightlines in Ashlands.
-
-### ❄️ Deep North
-* **Enable Deep North Global Mist**: Controls misty environmental effects across the Deep North.
-* **Enable Deep North FaderFX**: Controls high-latitude fader occlusion effects causing foggy blindness.
+[![GitHub Release](https://img.shields.io/github/v/release/Vapok/NoFogBruh?include_prereleases&logo=github&style=for-the-badge)](https://github.com/Vapok/NoFogBruh/releases)
+[![Thunderstore Version](https://img.shields.io/thunderstore/v/Vapok/NoFogBruh?logo=thunderstore&style=for-the-badge)](https://thunderstore.io/c/valheim/p/Vapok/NoFogBruh/)
+[![Discord](https://img.shields.io/badge/Discord-Join%20Community-7289da?logo=discord&logoColor=white&style=for-the-badge)](https://discord.gg/5YAJkRFBXt)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
 ---
 
-## 🔒 Server Synchronization & Admin Enforcement
+</div>
 
-Certain gameplay-altering mist settings (such as **Mistlands Particle Mist**, **Mountain Cave Mist**, and **Troll Cave Mist**) support server-side synchronization:
-* When connected to a dedicated server running **No Fog Bruh!**, server administrators can lock and enforce these settings to maintain gameplay balance.
-* Client-side visual preferences (such as general depth fog and snow glint) remain fully customizable per player.
+Craving crystal-clear horizons and sweeping vistas across the Tenth Realm? **No Fog Bruh!** gives you complete, granular control over Valheim's atmospheric fog, dense ground mist, volumetric cloud layers, snowstorm blizzards, and blinding snow glint across every biome in the game.
 
 ---
 
-## 📦 Installation
+## 🗺️ Biome-by-Biome Suppression
 
-### Automatic Installation (Recommended)
-Install using your favorite mod manager (e.g., r2modman or Thunderstore Mod Manager).
-
-### Manual Installation
-1. Ensure [BepInEx Pack for Valheim](https://valheim.thunderstore.io/package/denikson/BepInExPack_Valheim/) and [Jötunn, the Valheim Library](https://valheim.thunderstore.io/package/ValheimModding/Jotunn/) are installed.
-2. Download the latest release from [Thunderstore](https://valheim.thunderstore.io/package/Vapok/NoFogBruh/) or [GitHub Releases](https://github.com/Vapok/NoFogBruh/releases).
-3. Extract `NoFogBruh.dll` into your `Valheim/BepInEx/plugins/` directory.
-
----
-
-## 📋 Patch Notes
-See the full changelog in [CHANGELOG.md](https://github.com/Vapok/NoFogBruh/blob/main/CHANGELOG.md).
+| Biome Category | Supported Suppression Elements |
+| :--- | :--- |
+| **General / Global** | Global Atmospheric Fog, Ambient Occlusion, Low Ground Mist, Volumetric Clouds, Distant Fog Emitters. |
+| **Ocean** | Dense Ocean Surface Mist and Rolling Sea Waves Fog. |
+| **Black Forest** | Deep Forest Ground Mist and Troll Cave Fog. |
+| **Mountain & Deep North** | Blizzard Particle Arrays, Dense Snowstorm Mist, and Blinding Snow Surface Specular Glint. |
+| **Mistlands** | Mistlands Volumetric Mist Clouds, Dynamic Particle Mist, and Distant Mist Emitters. |
+| **Ashlands** | Volumetric Atmospheric Mist and Ambient Ash/Smoke Emitters. |
 
 ---
 
-## 👥 Credits & Contact
+## ⚙️ Configuration & Settings
 
-* **Mod Author**: [Vapok](https://github.com/Vapok)
-* **Special Thanks**: Azumatt
-* **Source Code**: [GitHub Repository](https://github.com/Vapok/NoFogBruh)
-* **Discord Community**: [Vapok's Mod Community](https://discord.gg/5YAJkRFBXt)
+Configure every biome setting individually via the in-game [BepInEx Configuration Manager](https://github.com/BepInEx/BepInEx.ConfigurationManager) (<kbd>F1</kbd>):
+
+| Setting | Default | Description |
+| :--- | :--- | :--- |
+| **Disable Global Fog** | `true` | Suppresses standard atmospheric horizon fog. |
+| **Disable Ground Mist** | `true` | Removes low-lying ground mist layers across biomes. |
+| **Disable Ocean Mist** | `true` | Clears dense mist when sailing on open ocean waters. |
+| **Disable Snow Glint** | `true` | Suppresses harsh specular reflections and glint across snowfields. |
+| **Disable Blizzard Mist** | `true` | Clears blinding whiteout particle arrays during snowstorms. |
+| **Disable Mistlands Mist** | `false` | Toggles Mistlands mist suppression *(ServerSync controlled)*. |
+| **Disable Ashlands Mist** | `true` | Suppresses atmospheric fog in the Ashlands. |
+
+---
+
+## 🛡️ Advanced Safeguards & Performance
+
+* ⚡ **Zero Frame Overhead**: Converted legacy per-frame scene searching to cached environment event handlers for smooth, stutter-free performance.
+* 🛡️ **ServerSync Administration**: Dedicated server administrators can selectively lock and synchronize visibility settings (e.g. Mistlands mist) to maintain fair gameplay across all players.
+
+---
+
+## 🤝 Verified Mod Compatibility
+
+<div align="center">
+
+| Mod | Compatibility Status |
+| :--- | :--- |
+| **The Queen's Dead Bruh!** | 🟢 Fully Supported |
+| **BetterSleepBruh** | 🟢 Fully Supported |
+| **AdventureBackpacks** | 🟢 Fully Supported (Wisplights continue functioning normally) |
+| **HD Texture & Environment Packs** | 🟢 Fully Supported |
+
+</div>
+
+---
+
+## 🌐 Available Translations
+
+<div align="center">
+
+🇺🇸 **English** • 🇩🇪 **German** • 🇫🇷 **French** • 🇪🇸 **Spanish** • 🇨🇳 **Chinese** • 🇷🇺 **Russian**
+
+</div>
+
+---
+
+## 📥 Installation & Server Setup
+
+### Mod Manager (Recommended)
+1. Install via **R2ModMan** or **Thunderstore Mod Manager**.
+2. Dependencies (`BepInExPack`, `Jotunn (JVL)`) are installed automatically.
+
+### Dedicated Servers
+* **Client & Server Compatible**: Can run as a client-side visual enhancement or deployed on dedicated servers for centralized admin control.
+
+---
+
+<div align="center">
+
+### 👨‍💻 Created by Vapok Gaming
+
+[![Vapok Gaming](https://avatars.githubusercontent.com/u/1264136?s=120&v=4)](https://github.com/Vapok)
+
+**Author**: [Vapok](https://github.com/Vapok)  
+**Source Code**: [GitHub Repository](https://github.com/Vapok/NoFogBruh)  
+**Community & Support**: [Discord Server](https://discord.gg/5YAJkRFBXt)  
+**Changelog**: [Release Notes](https://github.com/Vapok/NoFogBruh/blob/main/CHANGELOG.md)
+
+</div>
