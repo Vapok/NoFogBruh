@@ -4,8 +4,6 @@
 
 ### *Comprehensive atmospheric fog, mist, and blizzard particle suppression for Valheim.*
 
-[![Survival Servers](https://ibin.co/5RCcxHBNFp)](https://www.survivalservers.com/services/game_servers/valheim/?ref=vapok)
-
 [![GitHub Release](https://img.shields.io/github/v/release/Vapok/NoFogBruh?include_prereleases&logo=github&style=for-the-badge)](https://github.com/Vapok/NoFogBruh/releases)
 [![Thunderstore Version](https://img.shields.io/thunderstore/v/Vapok/NoFogBruh?logo=thunderstore&style=for-the-badge)](https://thunderstore.io/c/valheim/p/Vapok/NoFogBruh/)
 [![Nexus Mods](https://img.shields.io/badge/Nexus_Mods-Available-da8e35?logo=nexusmods&style=for-the-badge)](https://www.nexusmods.com/valheim/mods/2285)
@@ -20,6 +18,14 @@
 Craving crystal-clear horizons and sweeping vistas across the Tenth Realm? **No Fog Bruh!** gives you complete, granular control over Valheim's atmospheric fog, dense ground mist, volumetric cloud layers, snowstorm blizzards, and blinding snow glint across every biome in the game.
 
 ---
+
+<div align="center">
+
+<br>
+
+[![Survival Servers](https://raw.githubusercontent.com/Vapok/NoFogBruh/refs/heads/main/images/survivalservers_banner.png)](https://www.survivalservers.com/services/game_servers/valheim/?ref=vapok)
+
+</div>
 
 ## 🗺️ Biome-by-Biome Suppression
 
