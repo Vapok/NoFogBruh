@@ -23,7 +23,7 @@ Craving crystal-clear horizons and sweeping vistas across the Tenth Realm? **No 
 
 <br>
 
-[![Survival Servers](https://raw.githubusercontent.com/Vapok/NoFogBruh/refs/heads/main/images/survivalservers_banner.png)](https://www.survivalservers.com/services/game_servers/valheim/?ref=vapok)
+[![Survival Servers](https://raw.githubusercontent.com/Vapok/NoFogBruh/main/images/survivalservers_banner.png)](https://www.survivalservers.com/services/game_servers/valheim/?ref=vapok)
 
 </div>
 
