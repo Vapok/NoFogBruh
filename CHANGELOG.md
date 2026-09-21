@@ -1,9 +1,14 @@
-# 2.0.7 - Valheim 1.0.15 Alignment & Internalized Dependency Updates
-* **Valheim 1.0.15 Alignment**: Updated game assembly references and internalized `Vapok.Valheim.Common` 3.13.1015.
-* **Localization & Stability**: Re-synchronized 35-language splash localizations and verified patch compatibility.
+# 2.0.8 - Performance Optimization & Frame Rate Fix
+* **Major Performance Fix**: Fixed an issue where the game lost frame rate whenever the mod was loaded.
+* **Instant Setting Updates**: Changing fog options in the game menus now updates atmospheric effects immediately without performance hiccups.
+* **Snow Glint Optimization**: Improved game update efficiency when snow glint is turned off.
 
 <details>
 <summary><b>2.0 Changelog History (Valheim Release)</b> (<i>click to expand</i>)</summary>
+
+### 2.0.7 - Valheim 1.0.15 Alignment & Internalized Dependency Updates
+* **Valheim 1.0.15 Alignment**: Updated game assembly references and internalized `Vapok.Valheim.Common` 3.13.1015.
+* **Localization & Stability**: Re-synchronized 35-language splash localizations and verified patch compatibility.
 
 ### 2.0.6 - Splash Window Updates & Valheim 1.0.14 Alignment
 * **Splash Window Updates**:

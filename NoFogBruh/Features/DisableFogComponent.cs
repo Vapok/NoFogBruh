@@ -1,6 +1,7 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Reflection.Emit;
 using BepInEx.Configuration;
 using HarmonyLib;
@@ -49,7 +50,11 @@ public class DisableFogComponent
 
     static DisableFogComponent()
     {
-        ConfigRegistry.Waiter.StatusChanged += (_, _) => RegisterConfigurationFile();
+        ConfigRegistry.Waiter.StatusChanged += (_, _) =>
+        {
+            RegisterConfigurationFile();
+            FogTargetManager.Initialize();
+        };
     }
 
     private static void RegisterConfigurationFile()
@@ -171,17 +176,8 @@ public class DisableFogComponent
         }
     }
 
-    private static void SetActiveIfExists(string path, bool active)
-    {
-        var go = GameObject.Find(path);
-        if (go != null && go.activeSelf != active)
-        {
-            go.SetActive(active);
-        }
-    }
-
     [HarmonyPatch(typeof(EnvMan), nameof(EnvMan.SetEnv))]
-    public static class EnvManSetEnvPatch
+    private static class EnvManSetEnvPatch
     {
         private static void Postfix(EnvMan __instance, EnvSetup env)
         {
@@ -190,45 +186,31 @@ public class DisableFogComponent
                 RenderSettings.fogDensity = 0f;
             }
 
-            if (EnvMan.instance == null) return;
+            if (EnvMan.instance == null || env == null)
+            {
+                return;
+            }
 
-            SetActiveIfExists("_GameMain/_Environment/FollowPlayer/GroundMist", EnableGroundMist.Value);
-            SetActiveIfExists("_LocationList_Mistlands(Clone)/environment_effects/FollowPlayer/Mistlands_Globalmist", EnableMistlandsMist.Value);
-            SetActiveIfExists("_LocationList_Mistlands/environment_effects/FollowPlayer/Mistlands_Globalmist", EnableMistlandsMist.Value);
-            SetActiveIfExists("_GameMain/_Environment/FollowPlayer/InteriorDust", EnableInteriorDust.Value);
-            SetActiveIfExists("_LocationList_MountainCaves(Clone)/environment/followplayer/env_mountain_cave/mist", EnableMountainCaveMist.Value);
-            SetActiveIfExists("_LocationList_MountainCaves(Clone)/environment/followplayer/env_mountain_cave_hildir/mist", EnableMountainCaveMist.Value);
-            SetActiveIfExists("_GameMain/_Environment/FollowPlayer/Mist", EnableFog.Value);
-            SetActiveIfExists("_GameMain/_Environment/FollowPlayer/FogClouds", EnableFogClouds.Value);
-            SetActiveIfExists("_GameMain/_Environment/OceanMist", EnableFogOceanMist.Value);
-            SetActiveIfExists("_GameMain/_Environment/Distant_fog_planes", EnableDistantFog.Value);
-            SetActiveIfExists("_LocationList_Ashlands(Clone)/environment_effects/FollowPlayer/Ashlands_Misty", EnableAshlandsMist.Value);
-            SetActiveIfExists("_LocationList_Ashlands(Clone)/environment_effects/FollowPlayer/Ashlands_FaderFX", EnableAshlandsFaderFx.Value);
-            SetActiveIfExists("_LocationList_Ashlands/environment_effects/FollowPlayer/Ashlands_Misty", EnableAshlandsMist.Value);
-            SetActiveIfExists("_LocationList_Ashlands/environment_effects/FollowPlayer/Ashlands_FaderFX", EnableAshlandsFaderFx.Value);
-            SetActiveIfExists("_LocationList_DeepNorth(Clone)/environment_effects/FollowPlayer/DeepNorth_Misty", EnableDeepNorthMist.Value);
-            SetActiveIfExists("_LocationList_DeepNorth(Clone)/environment_effects/FollowPlayer/DeepNorth_FaderFX", EnableDeepNorthFaderFx.Value);
-            SetActiveIfExists("_LocationList_DeepNorth/environment_effects/FollowPlayer/DeepNorth_Misty", EnableDeepNorthMist.Value);
-            SetActiveIfExists("_LocationList_DeepNorth/environment_effects/FollowPlayer/DeepNorth_FaderFX", EnableDeepNorthFaderFx.Value);
-            SetActiveIfExists("_GameMain/_Environment/FollowPlayer/SnowStorm", EnableBlizzardMist.Value);
-            SetActiveIfExists("_GameMain/_Environment/FollowPlayer/Blizzard", EnableBlizzardMist.Value);
+            FogTargetManager.OnSetEnv(env.m_envObject);
         }
     }
 
     [HarmonyPatch(typeof(EnvMan), nameof(EnvMan.Update))]
-    public static class EnvManUpdatePatch
+    private static class EnvManUpdatePatch
     {
+        private static readonly int _snowGlintStrengthId = Shader.PropertyToID("_SnowGlintStrength");
+
         private static void Postfix(EnvMan __instance)
         {
             if (!EnableSnowGlint.Value)
             {
-                Shader.SetGlobalFloat("_SnowGlintStrength", 0f);
+                Shader.SetGlobalFloat(_snowGlintStrengthId, 0f);
             }
         }
     }
 
     [HarmonyPatch(typeof(EnvMan), nameof(EnvMan.SetParticleArrayEnabled))]
-    public static class EnvManSetParticleArrayEnabledPatch
+    private static class EnvManSetParticleArrayEnabledPatch
     {
         private static void Postfix(GameObject[] psystems, bool enabled)
         {
@@ -264,7 +246,7 @@ public class DisableFogComponent
     }
 
     [HarmonyPatch(typeof(ParticleMist), nameof(ParticleMist.Update))]
-    public static class ParticleMistUpdatePatch
+    private static class ParticleMistUpdatePatch
     {
         private static bool Prefix(ParticleMist __instance)
         {
@@ -281,7 +263,7 @@ public class DisableFogComponent
     }
 
     [HarmonyPatch(typeof(DistantFogEmitter), nameof(DistantFogEmitter.Update))]
-    public static class DistantFogEmitterUpdatePatch
+    private static class DistantFogEmitterUpdatePatch
     {
         private static bool Prefix(DistantFogEmitter __instance)
         {
@@ -295,17 +277,17 @@ public class DisableFogComponent
     }
     
     [HarmonyPatch(typeof(PostProcessingBehaviour), nameof(PostProcessingBehaviour.OnPreRender))]
-    static class PostProcessingBehaviourPatch
+    private static class PostProcessingBehaviourPatch
     {
         public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
         {
-            var instrs = instructions.ToList();
-            var ambientComponentField = AccessTools.DeclaredField(typeof(PostProcessingBehaviour), "m_AmbientOcclusion");
-            var fogComponentField = AccessTools.DeclaredField(typeof(PostProcessingBehaviour), "m_FogComponent");
+            List<CodeInstruction> instrs = instructions.ToList();
+            FieldInfo ambientComponentField = AccessTools.DeclaredField(typeof(PostProcessingBehaviour), "m_AmbientOcclusion");
+            FieldInfo fogComponentField = AccessTools.DeclaredField(typeof(PostProcessingBehaviour), "m_FogComponent");
             
-            var skipstopA = 0;
-            var partADone = false;
-            var skipstopB = 0;
+            int skipstopA = 0;
+            bool partADone = false;
+            int skipstopB = 0;
 
             for (int i = 0; i < instrs.Count; ++i)
             {
@@ -317,7 +299,7 @@ public class DisableFogComponent
                         instrs[i + 2].opcode == OpCodes.Ldarg_0 && instrs[i + 3].opcode == OpCodes.Ldfld &&
                         instrs[i + 3].operand.Equals(ambientComponentField) && instrs[i + 4].opcode == OpCodes.Call)
                     {
-                        var ldlocInstruction = new CodeInstruction(OpCodes.Ldarg_0);
+                        CodeInstruction ldlocInstruction = new CodeInstruction(OpCodes.Ldarg_0);
                         if (instrs[i].labels.Count > 0)
                             instrs[i].MoveLabelsTo(ldlocInstruction);
 
@@ -340,7 +322,7 @@ public class DisableFogComponent
                         instrs[i + 2].opcode == OpCodes.Ldarg_0 && instrs[i + 3].opcode == OpCodes.Ldfld &&
                         instrs[i + 3].operand.Equals(fogComponentField) && instrs[i + 4].opcode == OpCodes.Call)
                     {
-                        var ldlocInstruction = new CodeInstruction(OpCodes.Ldarg_0);
+                        CodeInstruction ldlocInstruction = new CodeInstruction(OpCodes.Ldarg_0);
                         if (instrs[i].labels.Count > 0)
                             instrs[i].MoveLabelsTo(ldlocInstruction);
           

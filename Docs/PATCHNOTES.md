@@ -1,3 +1,16 @@
+# 2.0.8 - Performance Optimization & Frame Rate Fix
+* **Eliminated Per-Frame Scene Traversal**:
+  * Resolved critical frame rate regression where `EnvManSetEnvPatch.Postfix` executed 20 unconditional `GameObject.Find` calls per physics tick (50Hz / 1,000 traversals per second).
+  * Implemented `FogTargetManager` with hierarchical transform resolution (`_environmentRoot.Find`) and direct `LocationList.GetAllLocationLists()` registry lookup.
+  * Cached resolved native `GameObject` pointers to replace string path searches with $< 50\text{ ns}$ pointer and boolean state comparisons.
+  * Tied state application to `ConfigEntry.SettingChanged` events and weather transition events (`env.m_envObject != _lastEnvObject`), with throttled 3-second background polling during world generation.
+* **Snow Glint Property Optimization**:
+  * Cached `_snowGlintStrengthId = Shader.PropertyToID("_SnowGlintStrength")` in `EnvManUpdatePatch.Postfix` to eliminate per-frame string property name hashing.
+* **Code Architecture & Cleanup**:
+  * Refactored Harmony patch classes and methods to `private static`.
+  * Removed lazy `var` keywords and replaced with explicit types across all patched routines.
+  * Added `FogTargetManager.Reset()` cleanup hook in `NoFogBruh.OnDestroy` to release references across scene lifecycles.
+
 # 2.0.7 - Valheim 1.0.15 Alignment & Internalized Dependency Updates
 * **Valheim 1.0.15 Alignment**:
   * Aligned publicized game assembly and UnityEngine references to Valheim 1.0.15.
