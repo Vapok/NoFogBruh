@@ -6,6 +6,10 @@
   * Tied state application to `ConfigEntry.SettingChanged` events and weather transition events (`env.m_envObject != _lastEnvObject`), with throttled 3-second background polling during world generation.
 * **Snow Glint Property Optimization**:
   * Cached `_snowGlintStrengthId = Shader.PropertyToID("_SnowGlintStrength")` in `EnvManUpdatePatch.Postfix` to eliminate per-frame string property name hashing.
+* **Dedicated Server & Headless Runtimes**:
+  * Added headless detection (`SystemInfo.graphicsDeviceType == GraphicsDeviceType.Null`) in `NoFogBruh.Awake` to immediately initialize `ConfigRegistry` and load server configuration on dedicated servers without waiting for `FejdStartup`.
+  * Added headless bypass guards across `FogTargetManager` and `DisableFogComponent` patches to ensure headless servers never execute client-only visual lookups.
+  * Added `FogTargetManager.Reset()` hook in `FejdStartupAwakePatch.Prefix` to clear cached scene references when players return to the main menu.
 * **Code Architecture & Cleanup**:
   * Refactored Harmony patch classes and methods to `private static`.
   * Removed lazy `var` keywords and replaced with explicit types across all patched routines.

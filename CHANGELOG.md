@@ -2,6 +2,7 @@
 * **Major Performance Fix**: Fixed an issue where the game lost frame rate whenever the mod was loaded.
 * **Instant Setting Updates**: Changing fog options in the game menus now updates atmospheric effects immediately without performance hiccups.
 * **Snow Glint Optimization**: Improved game update efficiency when snow glint is turned off.
+* **Dedicated Server Safety**: Ensured server-side settings load properly on dedicated servers while bypassing unnecessary visual checks.
 
 <details>
 <summary><b>2.0 Changelog History (Valheim Release)</b> (<i>click to expand</i>)</summary>
