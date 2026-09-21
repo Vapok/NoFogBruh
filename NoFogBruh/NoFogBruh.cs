@@ -6,6 +6,7 @@ using HarmonyLib;
 using JetBrains.Annotations;
 using Jotunn.Managers;
 using Jotunn.Utils;
+using UnityEngine;
 using NoFogBruh.Configuration;
 using NoFogBruh.Features;
 using Vapok.Common.Abstractions;
@@ -83,9 +84,10 @@ namespace NoFogBruh
             _harmony = new Harmony(Info.Metadata.GUID);
             _harmony.PatchAll(Assembly.GetExecutingAssembly());
 
-            //???
-
-            //Profit
+            if (SystemInfo.graphicsDeviceType == UnityEngine.Rendering.GraphicsDeviceType.Null)
+            {
+                InitializeModule(this, EventArgs.Empty);
+            }
         }
 
         public void InitializeModule(object send, EventArgs args)

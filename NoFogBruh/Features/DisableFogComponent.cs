@@ -181,6 +181,11 @@ public class DisableFogComponent
     {
         private static void Postfix(EnvMan __instance, EnvSetup env)
         {
+            if (SystemInfo.graphicsDeviceType == UnityEngine.Rendering.GraphicsDeviceType.Null)
+            {
+                return;
+            }
+
             if (!EnableFog.Value)
             {
                 RenderSettings.fogDensity = 0f;
@@ -202,6 +207,11 @@ public class DisableFogComponent
 
         private static void Postfix(EnvMan __instance)
         {
+            if (SystemInfo.graphicsDeviceType == UnityEngine.Rendering.GraphicsDeviceType.Null)
+            {
+                return;
+            }
+
             if (!EnableSnowGlint.Value)
             {
                 Shader.SetGlobalFloat(_snowGlintStrengthId, 0f);

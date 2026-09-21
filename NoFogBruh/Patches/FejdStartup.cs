@@ -1,4 +1,5 @@
-﻿using HarmonyLib;
+using HarmonyLib;
+using NoFogBruh.Features;
 
 namespace NoFogBruh.Patches;
 
@@ -12,6 +13,7 @@ public class FejdStartupPatches
     {
         static void Prefix()
         {
+            FogTargetManager.Reset();
             NoFogBruh.Waiter.ValheimIsAwake(true);
         }
     }
