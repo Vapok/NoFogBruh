@@ -1,3 +1,10 @@
+# 2.0.9 - Internalized Library & Dependency Updates
+* **Dependency Updates**:
+  * Updated internalized `Vapok.Valheim.Common` to 3.17.1015.
+  * Updated `JotunnLib` dependency to 2.30.2.
+* **Compatibility Verification**:
+  * Audited weather particle hooks and headless dedicated server safety.
+
 # 2.0.8 - Performance Optimization & Frame Rate Fix
 * **Eliminated Per-Frame Scene Traversal**:
   * Resolved critical frame rate regression where `EnvManSetEnvPatch.Postfix` executed 20 unconditional `GameObject.Find` calls per physics tick (50Hz / 1,000 traversals per second).

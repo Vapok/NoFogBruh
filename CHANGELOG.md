@@ -1,11 +1,15 @@
-# 2.0.8 - Performance Optimization & Frame Rate Fix
+# 2.0.9 - Internalized Library & Dependency Updates
+* **Library Updates**: Updated internalized `Vapok.Valheim.Common` to 3.17.1015 and `Jotunn` to 2.30.2.
+* **Stability**: Re-verified fog suppression and performance on Valheim 1.0.15.
+
+<details>
+<summary><b>2.0 Changelog History (Valheim Release)</b> (<i>click to expand</i>)</summary>
+
+### 2.0.8 - Performance Optimization & Frame Rate Fix
 * **Major Performance Fix**: Fixed an issue where the game lost frame rate whenever the mod was loaded.
 * **Instant Setting Updates**: Changing fog options in the game menus now updates atmospheric effects immediately without performance hiccups.
 * **Snow Glint Optimization**: Improved game update efficiency when snow glint is turned off.
 * **Dedicated Server Safety**: Ensured server-side settings load properly on dedicated servers while bypassing unnecessary visual checks.
-
-<details>
-<summary><b>2.0 Changelog History (Valheim Release)</b> (<i>click to expand</i>)</summary>
 
 ### 2.0.7 - Valheim 1.0.15 Alignment & Internalized Dependency Updates
 * **Valheim 1.0.15 Alignment**: Updated game assembly references and internalized `Vapok.Valheim.Common` 3.13.1015.

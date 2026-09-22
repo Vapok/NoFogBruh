@@ -27,7 +27,7 @@ namespace NoFogBruh
         //Module Constants
         private const string _pluginId = "vapok.mods.nofogbruh";
         private const string _displayName = "No Fog Bruh";
-        private const string _version = "2.0.8";
+        private const string _version = "2.0.9";
         
         //Interface Properties
         public string PluginId => _pluginId;
