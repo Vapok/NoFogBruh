@@ -1,6 +1,10 @@
 # 2.0.9 - Internalized Library & Dependency Updates
+* **Library Configuration Synchronization (`Vapok.Valheim.Common`)**:
+  * Updated internalized `Vapok.Valheim.Common` to 3.21.1015.
+  * Resolves dedicated server issue where admin-only synchronized configurations were stuck in `ReadOnly = true` mode, preventing authorized server admins from editing mod settings in `ConfigDrawers`.
+  * Synchronizes admin status immediately upon receiving `ZNet.RPC_AdminList`.
 * **Dependency Updates**:
-  * Updated internalized `Vapok.Valheim.Common` to 3.19.1015.
+  * Updated internalized `Vapok.Valheim.Common` to 3.21.1015.
   * Updated `JotunnLib` dependency to 2.30.2.
 * **Compatibility Verification**:
   * Audited weather particle hooks and headless dedicated server safety.

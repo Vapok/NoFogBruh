@@ -1,4 +1,5 @@
 # 2.0.9 - Dependency Updates & Stability
+* **Configuration Sync**: Resolved a library configuration synchronization issue.
 * **Dependency Updates**: Updated Jotunn to 2.30.2 and internal dependencies for stability.
 * **Stability**: Re-verified fog suppression and performance on Valheim 1.0.15.
 
