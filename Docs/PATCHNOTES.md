@@ -1,6 +1,6 @@
 # 2.0.9 - Internalized Library & Dependency Updates
 * **Dependency Updates**:
-  * Updated internalized `Vapok.Valheim.Common` to 3.17.1015.
+  * Updated internalized `Vapok.Valheim.Common` to 3.19.1015.
   * Updated `JotunnLib` dependency to 2.30.2.
 * **Compatibility Verification**:
   * Audited weather particle hooks and headless dedicated server safety.
