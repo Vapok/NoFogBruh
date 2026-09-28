@@ -27,7 +27,7 @@ namespace NoFogBruh
         //Module Constants
         private const string _pluginId = "vapok.mods.nofogbruh";
         private const string _displayName = "No Fog Bruh";
-        private const string _version = "2.0.9";
+        private const string _version = "2.0.10";
         
         //Interface Properties
         public string PluginId => _pluginId;
@@ -84,7 +84,7 @@ namespace NoFogBruh
             _harmony = new Harmony(Info.Metadata.GUID);
             _harmony.PatchAll(Assembly.GetExecutingAssembly());
 
-            if (SystemInfo.graphicsDeviceType == UnityEngine.Rendering.GraphicsDeviceType.Null)
+            if (GUIManager.IsHeadless())
             {
                 InitializeModule(this, EventArgs.Empty);
             }

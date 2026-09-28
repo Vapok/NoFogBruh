@@ -26,7 +26,7 @@ namespace NoFogBruh.Features
 
         public static void Initialize()
         {
-            if (_initialized || SystemInfo.graphicsDeviceType == UnityEngine.Rendering.GraphicsDeviceType.Null)
+            if (_initialized || Jotunn.Managers.GUIManager.IsHeadless())
             {
                 return;
             }
@@ -91,7 +91,7 @@ namespace NoFogBruh.Features
 
         public static void OnSetEnv(GameObject currentEnvObject)
         {
-            if (!_initialized || SystemInfo.graphicsDeviceType == UnityEngine.Rendering.GraphicsDeviceType.Null)
+            if (!_initialized || Jotunn.Managers.GUIManager.IsHeadless())
             {
                 return;
             }

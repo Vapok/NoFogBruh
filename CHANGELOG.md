@@ -1,10 +1,14 @@
-# 2.0.9 - Dependency Updates & Stability
-* **Configuration Sync**: Resolved a library configuration synchronization issue.
-* **Dependency Updates**: Updated Jotunn to 2.30.2 and internal dependencies for stability.
-* **Stability**: Re-verified fog suppression and performance on Valheim 1.0.15.
+# 2.0.10 - Dependency Updates & Stability
+* Standardized dedicated server checks for better stability.
+* Updated internal dependencies for stability.
 
 <details>
 <summary><b>2.0 Changelog History (Valheim Release)</b> (<i>click to expand</i>)</summary>
+
+### 2.0.9 - Dependency Updates & Stability
+* **Configuration Sync**: Resolved a library configuration synchronization issue.
+* **Dependency Updates**: Updated Jotunn to 2.30.2 and internal dependencies for stability.
+* **Stability**: Re-verified fog suppression and performance on Valheim 1.0.15.
 
 ### 2.0.8 - Performance Optimization & Frame Rate Fix
 * **Major Performance Fix**: Fixed an issue where the game lost frame rate whenever the mod was loaded.

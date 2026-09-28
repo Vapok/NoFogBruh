@@ -1,3 +1,10 @@
+# 2.0.10 - Dependency Updates & Stability
+* **Server Hardening**:
+  * Standardized headless dedicated server detection to `GUIManager.IsHeadless()` across `NoFogBruh`, `DisableFogComponent`, and `FogTargetManager`.
+* **Library Updates**:
+  * Internalized `Vapok.Valheim.Common` 3.22.1016.
+  * Updated game assembly references to 1.0.16.
+
 # 2.0.9 - Internalized Library & Dependency Updates
 * **Library Configuration Synchronization (`Vapok.Valheim.Common`)**:
   * Updated internalized `Vapok.Valheim.Common` to 3.21.1015.

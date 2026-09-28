@@ -181,7 +181,7 @@ public class DisableFogComponent
     {
         private static void Postfix(EnvMan __instance, EnvSetup env)
         {
-            if (SystemInfo.graphicsDeviceType == UnityEngine.Rendering.GraphicsDeviceType.Null)
+            if (Jotunn.Managers.GUIManager.IsHeadless())
             {
                 return;
             }
@@ -207,7 +207,7 @@ public class DisableFogComponent
 
         private static void Postfix(EnvMan __instance)
         {
-            if (SystemInfo.graphicsDeviceType == UnityEngine.Rendering.GraphicsDeviceType.Null)
+            if (Jotunn.Managers.GUIManager.IsHeadless())
             {
                 return;
             }
