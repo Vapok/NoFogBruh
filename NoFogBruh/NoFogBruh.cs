@@ -72,7 +72,6 @@ namespace NoFogBruh
             {
                 Tagline = "Configurable fog and environmental mist removal across biomes and weather conditions.",
                 ShowOnStartup = ConfigRegistry.ShowSplashOnStartup,
-                EnableTelemetry = ConfigRegistry.EnableTelemetry,
             });
 
             Localizer.Waiter.StatusChanged += InitializeModule;
