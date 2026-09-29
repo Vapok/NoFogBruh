@@ -56,6 +56,19 @@ Configure every biome setting individually via the in-game [BepInEx Configuratio
 
 ---
 
+## ⛅ Weather Events Management
+
+Selectively enable or disable individual weather cycles while preserving clear skies. Settings are organized into four dedicated configuration sections, all synchronized with the server:
+
+* **Weather Events - World**: Control natural biome weather cycles including dense fog (`Misty`), deep forest mist, rain, light rain, thunderstorms, swamp gloom, snow, blizzards, twilight snowfall, and ash storms.
+* **Weather Events - Boss**: Control atmospheric storm and lightning effects during boss encounters (Eikthyr, The Elder, Bonemass, Moder, Yagluth, The Queen, and Fader).
+* **Weather Events - Dungeon**: Manage interior crypt, cave, and mine atmospheric mist.
+* **Weather Events - Raid**: Control atmospheric distortions during base raids and Jotun invasions.
+
+All weather toggles update in real time—disabling an active weather event immediately clears it to sunny, clear skies without delay.
+
+---
+
 ## 🛡️ Advanced Safeguards & Performance
 
 * ⚡ **Zero Frame Overhead**: Converted legacy per-frame scene searching to cached environment event handlers for smooth, stutter-free performance.

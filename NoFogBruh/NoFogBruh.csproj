@@ -99,6 +99,7 @@
         <Compile Include="Configuration\ConfigRegistry.cs" />
         <Compile Include="Features\DisableFogComponent.cs" />
         <Compile Include="Features\FogTargetManager.cs" />
+        <Compile Include="Features\WeatherEventsComponent.cs" />
         <Compile Include="Patches\FejdStartup.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
         <Compile Include="NoFogBruh.cs" />

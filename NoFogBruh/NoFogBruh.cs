@@ -27,7 +27,7 @@ namespace NoFogBruh
         //Module Constants
         private const string _pluginId = "vapok.mods.nofogbruh";
         private const string _displayName = "No Fog Bruh";
-        private const string _version = "2.0.10";
+        private const string _version = "2.1.0";
         
         //Interface Properties
         public string PluginId => _pluginId;
@@ -78,6 +78,7 @@ namespace NoFogBruh
             
             //Register Features
             DisableFogComponent.FeatureInitialized = true;
+            WeatherEventsComponent.FeatureInitialized = true;
             
             //Patch Harmony
             _harmony = new Harmony(Info.Metadata.GUID);

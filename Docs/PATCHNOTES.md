@@ -1,3 +1,23 @@
+# 2.1.0 - Weather Events Management
+* **Weather Events Management Component (`WeatherEventsComponent`)**:
+  * Implemented `WeatherEventsComponent` to provide granular, server-synchronized toggling for natural weather environments, boss environments, dungeon interiors, and raid weather.
+  * Preserved `"Clear"` weather variants (`Clear`, `Twilight_Clear`, `Heath clear`, `Mistlands_clear`, `Ashlands_Ashrain_Clear`) as permanent invariant fallbacks across all biomes.
+* **4-Way Configuration Categorization**:
+  * `Weather Events - World`: Ambient biome weather (`Misty`, `DeepForest Mist`, `Rain`, `LightRain`, `ThunderStorm`, `SwampRain`, `Snow`, `SnowStorm`, `Twilight_Snow`, `Twilight_SnowStorm`, `Mistlands_rain`, `Mistlands_thunder`, `Ashlands_Misty`, `Ashlands_Ashrain`, `Ashlands_Cinderrain`, `Ashlands_Storm`, `Ashlands_Meteorshower`, `Ashlands_Seastorm`, `Ashrain`, `Darklands_dark`, `nofogts`).
+  * `Weather Events - Boss`: Arena fight environments (`Eikthyr`, `Eikthyr_no_lightning`, `GDKing`, `Bonemass`, `Moder`, `GoblinKing`, `Queen`, `Fader`, `DN_Bossroom`).
+  * `Weather Events - Dungeon`: Interior crypt and dungeon environments (`Crypt`, `SunkenCrypt`, `Caves`, `CavesHildir`, `CryptHildir`, `InfectedMine`).
+  * `Weather Events - Raid`: Invasion and raid environments (`Ghosts`, `JotunInvasion_meadows`, `JotunInvasion_blackforest`, `JotunInvasion_swamp`, `JotunInvasion_mountain`, `JotunInvasion_plains`, `JotunInvasion_mistlands`, `Morkhalla`, `TheHollow`).
+* **Multi-Stage Engine Interception**:
+  * Added Harmony Postfix on `EnvMan.GetAvailableEnvironments` to filter candidate weather lists prior to `SelectWeightedEnvironment`, inserting fallback clear environments if all options in a biome are disabled.
+  * Added Harmony Postfix on `EnvMan.GetEnvironmentOverride` to cancel disabled overrides (including debug environment strings `m_debugEnv` set via console).
+  * Added Harmony Prefixes on `EnvMan.QueueEnvironment(string)` and `EnvMan.QueueEnvironment(EnvSetup)` to redirect any queued disabled environments to clear fallback.
+  * Added Harmony Prefix on `EnvMan.SetForceEnvironment` to intercept forced environment strings.
+  * Added Harmony Prefix on `EnvMan.SetEnv` to substitute clear fallback on active frame, immediately triggering `SetParticleArrayEnabled` cleanup on active weather particle systems and resetting cloud material alpha.
+  * Added Harmony Postfixes on `EnvMan.Awake` and `EnvMan.AppendEnvironment` to dynamically discover and register modded weather environments into the appropriate configuration category.
+* **Real-Time Configuration Hot-Reload**:
+  * Implemented `OnWeatherSettingChanged` handler that clears active `m_debugEnv` and `m_forceEnv` if disabled.
+  * Directly reassigns `m_currentEnv` with `m_forceInstantEnvSwitchTimer = 2f` and `m_environmentPeriod = -1L` to force zero-delay weather recalculation upon setting change.
+
 # 2.0.10 - Dependency Updates & Stability
 * **Server Hardening**:
   * Standardized headless dedicated server detection to `GUIManager.IsHeadless()` across `NoFogBruh`, `DisableFogComponent`, and `FogTargetManager`.
