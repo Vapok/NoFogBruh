@@ -1,3 +1,6 @@
+# 2.1.1 - Compatibility Stability
+* **Compatibility Stability**: Updated dependencies for third party mod compatibilities.
+
 # 2.1.0 - Weather Events Management
 * **Weather Events Management Component (`WeatherEventsComponent`)**:
   * Implemented `WeatherEventsComponent` to provide granular, server-synchronized toggling for natural weather environments, boss environments, dungeon interiors, and raid weather.
