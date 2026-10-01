@@ -151,7 +151,7 @@ namespace NoFogBruh.Features
                     for (int j = 0; j < locationLists.Count; j++)
                     {
                         LocationList locList = locationLists[j];
-                        if (locList == null || locList.gameObject == null)
+                        if (locList == null || locList.gameObject == null || !locList.gameObject.scene.IsValid())
                         {
                             continue;
                         }
@@ -159,7 +159,7 @@ namespace NoFogBruh.Features
                         if (locList.gameObject.name.StartsWith(target.LocationListPrefix))
                         {
                             Transform found = locList.transform.Find(target.RelativePath);
-                            if (found != null)
+                            if (found != null && found.gameObject.scene.IsValid())
                             {
                                 target.Target = found.gameObject;
                                 break;
@@ -187,12 +187,19 @@ namespace NoFogBruh.Features
 
         private static void ApplyTarget(FogTarget target)
         {
-            if (target.Target != null && target.Config != null)
+            if (target.Target != null && target.Target.scene.IsValid() && target.Config != null)
             {
-                bool desired = target.Config.Value;
-                if (target.Target.activeSelf != desired)
+                try
                 {
-                    target.Target.SetActive(desired);
+                    bool desired = target.Config.Value;
+                    if (target.Target.activeSelf != desired)
+                    {
+                        target.Target.SetActive(desired);
+                    }
+                }
+                catch (System.Exception ex)
+                {
+                    NoFogBruh.Log.Debug($"Failed to apply fog target '{target.RelativePath}': {ex.Message}");
                 }
             }
         }

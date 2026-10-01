@@ -1,3 +1,12 @@
+# 2.1.2 - Scene Stability & Error Prevention
+* **Prefab Scene Lifecycle Invariant (`FogTargetManager`)**:
+  * Resolved Unity 6 `ArgumentException: The scene is invalid.` triggered when `LocationList.GetAllLocationLists()` enumerates pre-warmed prefab assets in memory during mod initialization and startup.
+  * Added `locList.gameObject.scene.IsValid()` and `found.gameObject.scene.IsValid()` guards in `FogTargetManager.ResolveTargets()` to strictly restrict location list transform resolution to active scene instances, preventing cached references to uninstantiated prefab assets.
+  * Guarded `FogTargetManager.ApplyTarget()` with `target.Target.scene.IsValid()` and exception handling to prevent invalid scene mutations during scene transitions or teardown.
+* **Defensive Configuration Access (`DisableFogComponent` & `WeatherEventsComponent`)**:
+  * Added defensive null checks across `SetFogSetting`, `SetAmbientSetting`, and all camera pre-render postfix hooks in `DisableFogComponent` to eliminate `NullReferenceException` risks during early camera frame rendering before configuration registration completes.
+  * Added defensive `config != null` evaluation in `WeatherEventsComponent.IsEnvironmentEnabled()`.
+
 # 2.1.1 - Compatibility Stability
 * **Compatibility Stability**: Updated dependencies for third party mod compatibilities.
 

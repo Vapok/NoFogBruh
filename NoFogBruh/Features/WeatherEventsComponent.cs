@@ -330,7 +330,7 @@ namespace NoFogBruh.Features
 
             if (_weatherConfigs.TryGetValue(envName, out ConfigEntry<bool> config))
             {
-                return config.Value;
+                return config != null ? config.Value : true;
             }
 
             return true;

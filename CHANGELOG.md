@@ -1,8 +1,12 @@
-# 2.1.1 - Compatibility Stability
-* **Compatibility Stability**: Updated dependencies for third party mod compatibilities.
+# 2.1.2 - Scene Stability & Error Prevention
+* **Scene Transition Stability**: Fixed an issue where changing scenes or starting up could trigger an invalid scene error.
+* **Rendering Reliability**: Added safeguards around camera effects during early loading to prevent startup crashes.
 
 <details>
 <summary><b>2.0 Changelog History (Valheim Release)</b> (<i>click to expand</i>)</summary>
+
+### 2.1.1 - Compatibility Stability
+* **Compatibility Stability**: Updated dependencies for third party mod compatibilities.
 
 ### 2.1.0 - Weather Events Management
 * **Weather Events Management**: Added granular control over individual weather events, allowing players and server admins to selectively turn off specific weather types while keeping clear skies.

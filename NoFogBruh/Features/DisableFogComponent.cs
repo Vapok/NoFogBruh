@@ -154,7 +154,7 @@ public class DisableFogComponent
 
     private static void SetFogSetting(PostProcessingBehaviour instance, FogComponent fog)
     {
-        if (EnableFog.Value)
+        if (EnableFog != null && EnableFog.Value)
         {
             instance.TryExecuteCommandBuffer(fog);
         }
@@ -166,7 +166,7 @@ public class DisableFogComponent
 
     private static void SetAmbientSetting(PostProcessingBehaviour instance, AmbientOcclusionComponent fog)
     {
-        if (EnableAmbientComponent.Value)
+        if (EnableAmbientComponent != null && EnableAmbientComponent.Value)
         {
             instance.TryExecuteCommandBuffer(fog);
         }
@@ -186,7 +186,7 @@ public class DisableFogComponent
                 return;
             }
 
-            if (!EnableFog.Value)
+            if (EnableFog != null && !EnableFog.Value)
             {
                 RenderSettings.fogDensity = 0f;
             }
@@ -212,7 +212,7 @@ public class DisableFogComponent
                 return;
             }
 
-            if (!EnableSnowGlint.Value)
+            if (EnableSnowGlint != null && !EnableSnowGlint.Value)
             {
                 Shader.SetGlobalFloat(_snowGlintStrengthId, 0f);
             }
@@ -226,7 +226,7 @@ public class DisableFogComponent
         {
             if (psystems == null) return;
 
-            if (!EnableMistEmitter.Value)
+            if (EnableMistEmitter != null && !EnableMistEmitter.Value)
             {
                 foreach (GameObject gameObject in psystems)
                 {
@@ -239,7 +239,7 @@ public class DisableFogComponent
                 }
             }
 
-            if (!EnableDistantFog.Value)
+            if (EnableDistantFog != null && !EnableDistantFog.Value)
             {
                 foreach (GameObject gameObject in psystems)
                 {
@@ -260,7 +260,7 @@ public class DisableFogComponent
     {
         private static bool Prefix(ParticleMist __instance)
         {
-            if (!EnableParticleMist.Value)
+            if (EnableParticleMist != null && !EnableParticleMist.Value)
             {
                 if (__instance.m_ps != null && __instance.m_ps.particleCount > 0)
                 {
@@ -277,7 +277,7 @@ public class DisableFogComponent
     {
         private static bool Prefix(DistantFogEmitter __instance)
         {
-            if (!EnableDistantFog.Value)
+            if (EnableDistantFog != null && !EnableDistantFog.Value)
             {
                 __instance.SetEmit(false);
                 return false;
