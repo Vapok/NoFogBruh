@@ -1,9 +1,14 @@
-# 2.1.2 - Scene Stability & Error Prevention
-* **Scene Transition Stability**: Fixed an issue where changing scenes or starting up could trigger an invalid scene error.
-* **Rendering Reliability**: Added safeguards around camera effects during early loading to prevent startup crashes.
+# 2.1.3 - Startup Screen Stability & Dependency Updates
+* Fixed an issue where the game startup screen could cause errors or fail to show under certain mod loading conditions.
+* Updated internal dependencies for stability.
 
 <details>
 <summary><b>2.0 Changelog History (Valheim Release)</b> (<i>click to expand</i>)</summary>
+
+
+### 2.1.2 - Scene Stability & Error Prevention
+* **Scene Transition Stability**: Fixed an issue where changing scenes or starting up could trigger an invalid scene error.
+* **Rendering Reliability**: Added safeguards around camera effects during early loading to prevent startup crashes.
 
 ### 2.1.1 - Compatibility Stability
 * **Compatibility Stability**: Updated dependencies for third party mod compatibilities.

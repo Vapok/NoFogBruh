@@ -1,3 +1,10 @@
+# 2.1.3 - Startup Screen Stability & Dependency Updates
+* **Startup Screen Stability**:
+  * In `Vapok.Valheim.Common` 3.1017.1, resolved `NullReferenceException` in `ModSplashManager` during startup notice display and component destruction ([NOFOGBRUH-B](https://vapok-gaming.sentry.io/issues/NOFOGBRUH-B)).
+* **Dependency & Engine Alignment**:
+  * Updated internalized dependency `Vapok.Valheim.Common` to 3.1017.1.
+  * Aligned game assembly references to Valheim 1.0.17.
+
 # 2.1.2 - Scene Stability & Error Prevention
 * **Prefab Scene Lifecycle Invariant (`FogTargetManager`)**:
   * Resolved Unity 6 `ArgumentException: The scene is invalid.` triggered when `LocationList.GetAllLocationLists()` enumerates pre-warmed prefab assets in memory during mod initialization and startup.
