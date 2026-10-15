@@ -1,10 +1,14 @@
-# 2.1.3 - Startup Screen Stability & Dependency Updates
-* Fixed an issue where the game startup screen could cause errors or fail to show under certain mod loading conditions.
-* Updated internal dependencies for stability.
+# 2.1.4 - Dependency Updates & Valheim 1.0.20 Alignment
+* **Compatibility**: Updated internal dependencies for stability and Valheim 1.0.20 compatibility.
 
 <details>
 <summary><b>2.0 Changelog History (Valheim Release)</b> (<i>click to expand</i>)</summary>
 
+
+
+### 2.1.3 - Startup Screen Stability & Dependency Updates
+* Fixed an issue where the game startup screen could cause errors or fail to show under certain mod loading conditions.
+* Updated internal dependencies for stability.
 
 ### 2.1.2 - Scene Stability & Error Prevention
 * **Scene Transition Stability**: Fixed an issue where changing scenes or starting up could trigger an invalid scene error.
