@@ -122,6 +122,24 @@ All weather toggles update in real time—disabling an active weather event imme
 * ⚠️ **Integration Policy**: NoFogBruh is a self-contained mod without a public API. Do not use reflection or Harmony patches on internal classes.
 * 💡 **Feature Requests**: If you need integration hooks or functionality, open a [Feature Request](https://github.com/Vapok/NoFogBruh/issues) or reach out in our [Discord](https://discord.gg/5YAJkRFBXt).
 
+---
+
+## 🤖 AI Disclosure & Transparency Audit
+
+In accordance with mod store's various AI policies, below is the full transparency breakdown for **NoFogBruh**:
+
+* **Audit Status**: `AI ASSISTED`
+* **Weighted LLM Score**: `21.7%`
+
+| Category | Evaluated Surface | LLM Score | Status |
+| :--- | :--- | :--- | :--- |
+| **C# Assembly & Logic** | Decompiled C# source (85 files) | `31.7%` | C# codebase shows AI assistance across 31.7% of substantive code lines (1/4 files, specifically cached shader property IDs and optimized environment reflection in DisableFogComponent.cs). |
+| **Package Manifest & Structure** | Manifest, structure & icon (v2.1.5) | `0.0%` | Manifest and package icon are completely authentic; icon.png is a clean desktop image-editor graphic composite with standard 8192-byte editor IDAT chunk structures. |
+| **Documentation & Copywriting** | Package documentation (7803 chars) | `45.0%` | README.md features structured Markdown layout, emoji section headers, alignment blocks, and feature matrices drafted with LLM documentation assistance. |
+| **Visual & Audio Media** | In-package Unity & media assets | `0.0%` | Mod package is a code-only mod containing zero in-package UnityFS AssetBundles, embedded PNG textures, or audio assets. |
+
+---
+
 ## 🔒 Anonymous Telemetry, Error Reporting & Privacy
 
 NoFogBruh includes lightweight, privacy-first telemetry and error reporting to help monitor mod stability, diagnose unhandled bugs, and track active version adoption across game updates.
